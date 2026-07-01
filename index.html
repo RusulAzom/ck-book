@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git & GitHub - শিখুন সহজে | GitLearn</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle Sidebar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="logo">
+                <i class="fa-brands fa-git-alt logo-icon"></i>
+                <span class="logo-text">Git<span>Learn</span></span>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+            <a href="#vcs" class="nav-link active">Git & GitHub</a>
+            <a href="#" class="nav-link disabled" onclick="alert('HTML & CSS modules are coming soon!')">HTML</a>
+            <a href="#" class="nav-link disabled" onclick="alert('JavaScript modules are coming soon!')">JavaScript</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="theme-switch-wrapper">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Light/Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Layout -->
+    <div class="app-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="topicSearch" placeholder="টপিক খুঁজুন...">
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-info">
+                    <span class="progress-label">সম্পন্ন হয়েছে</span>
+                    <span class="progress-percent" id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <nav class="sidebar-links" id="sidebarLinks">
+                <div class="sidebar-group-title">টিউটোরিয়াল সূচী</div>
+                
+                <a href="#vcs" class="sidebar-link active" data-id="vcs">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'vcs')">
+                        <input type="checkbox" id="chk-vcs" class="topic-chk">
+                    </span>
+                    <span class="link-text">১. VCS কী ও কেন?</span>
+                </a>
+                <a href="#git-vs-github" class="sidebar-link" data-id="git-vs-github">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'git-vs-github')">
+                        <input type="checkbox" id="chk-git-vs-github" class="topic-chk">
+                    </span>
+                    <span class="link-text">২. Git বনাম GitHub</span>
+                </a>
+                <a href="#git-stages" class="sidebar-link" data-id="git-stages">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'git-stages')">
+                        <input type="checkbox" id="chk-git-stages" class="topic-chk">
+                    </span>
+                    <span class="link-text">৩. Git-এর ৩টি স্টেজ</span>
+                </a>
+                <a href="#git-setup" class="sidebar-link" data-id="git-setup">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'git-setup')">
+                        <input type="checkbox" id="chk-git-setup" class="topic-chk">
+                    </span>
+                    <span class="link-text">৪. প্রথমবার Git Setup</span>
+                </a>
+                <a href="#subsequent-push" class="sidebar-link" data-id="subsequent-push">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'subsequent-push')">
+                        <input type="checkbox" id="chk-subsequent-push" class="topic-chk">
+                    </span>
+                    <span class="link-text">৫. পরবর্তী বার Push</span>
+                </a>
+                <a href="#important-commands" class="sidebar-link" data-id="important-commands">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'important-commands')">
+                        <input type="checkbox" id="chk-important-commands" class="topic-chk">
+                    </span>
+                    <span class="link-text">৬. গুরুত্বপূর্ণ কমান্ডসমূহ</span>
+                </a>
+                <a href="#branches" class="sidebar-link" data-id="branches">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'branches')">
+                        <input type="checkbox" id="chk-branches" class="topic-chk">
+                    </span>
+                    <span class="link-text">৭. Branch কী ও কমান্ড</span>
+                </a>
+                <a href="#merge-conflict" class="sidebar-link" data-id="merge-conflict">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'merge-conflict')">
+                        <input type="checkbox" id="chk-merge-conflict" class="topic-chk">
+                    </span>
+                    <span class="link-text">৮. Merge & Conflict</span>
+                </a>
+                <a href="#fork-clone-pr" class="sidebar-link" data-id="fork-clone-pr">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'fork-clone-pr')">
+                        <input type="checkbox" id="chk-fork-clone-pr" class="topic-chk">
+                    </span>
+                    <span class="link-text">৯. Fork, Clone & PR</span>
+                </a>
+                <a href="#keyboard-shortcuts" class="sidebar-link" data-id="keyboard-shortcuts">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'keyboard-shortcuts')">
+                        <input type="checkbox" id="chk-keyboard-shortcuts" class="topic-chk">
+                    </span>
+                    <span class="link-text">১০. কীবোর্ড শর্টকাট</span>
+                </a>
+                <a href="#beginner-errors" class="sidebar-link" data-id="beginner-errors">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'beginner-errors')">
+                        <input type="checkbox" id="chk-beginner-errors" class="topic-chk">
+                    </span>
+                    <span class="link-text">১১. সাধারণ ভুল ও সমাধান</span>
+                </a>
+                <a href="#github-pages" class="sidebar-link" data-id="github-pages">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'github-pages')">
+                        <input type="checkbox" id="chk-github-pages" class="topic-chk">
+                    </span>
+                    <span class="link-text">১২. GitHub Pages পাবলিশ</span>
+                </a>
+                <a href="#gitignore" class="sidebar-link" data-id="gitignore">
+                    <span class="link-checkbox-wrapper" onclick="toggleProgress(event, 'gitignore')">
+                        <input type="checkbox" id="chk-gitignore" class="topic-chk">
+                    </span>
+                    <span class="link-text">১৩. .gitignore-এর ব্যবহার</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            
+            <!-- SECTION 1: VCS -->
+            <section id="sec-vcs" class="content-section active">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ০১</div>
+                    <h1>Version Control System (VCS) কী?</h1>
+                    <div class="divider"></div>
+                    
+                    <p class="intro-text">
+                        <strong>VCS (ভার্সন কন্ট্রোল সিস্টেম)</strong> হলো এমন একটি সিস্টেম যা আমাদের ফাইলের পরিবর্তনগুলোকে সময় অনুযায়ী ট্র‍্যাক করে বা রেকর্ড করে রাখে। এর ফলে কোনো ফাইলে কী পরিবর্তন হয়েছে, কে করেছে, কেন করেছে—সবকিছুর ইতিহাস (History) সংরক্ষিত থাকে।
+                    </p>
+
+                    <div class="illustration-container">
+                        <div class="flow-diagram">
+                            <div class="flow-node">
+                                <span class="node-label">V1</span>
+                                <span class="node-sub">প্রথম ড্রাফট</span>
+                            </div>
+                            <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                            <div class="flow-node">
+                                <span class="node-label">V2</span>
+                                <span class="node-sub">বাগ ফিক্স</span>
+                            </div>
+                            <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                            <div class="flow-node active">
+                                <span class="node-label">V3</span>
+                                <span class="node-sub">ডিজাইন আপডেট</span>
+                                <span class="node-history"><i class="fa-solid fa-clock-rotate-left"></i> History</span>
+                            </div>
+                            <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                            <div class="flow-node">
+                                <span class="node-label">V4</span>
+                                <span class="node-sub">ফাইনাল কোড</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>VCS কেন দরকার? (Why do we need it?)</h3>
+                    <ul class="styled-list">
+                        <li>
+                            <i class="fa-solid fa-circle-check list-icon"></i>
+                            <strong>পূর্বের Version-এ ফিরে যাওয়া যায়:</strong> কোডে কোনো বড় ভুল হলে আগের যেকোনো ভালো ভার্সনে সহজেই ফিরে যাওয়া সম্ভব।
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check list-icon"></i>
+                            <strong>সহজ টিমওয়ার্ক (Collaboration):</strong> একাধিক টিম মেম্বার একই ফাইলের আলাদা আলাদা অংশে কোনো ঝামেলা ছাড়াই একসাথে কাজ করতে পারেন।
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check list-icon"></i>
+                            <strong>কোড নিরাপদ থাকে (Code Safety):</strong> ভুলবশত কোড ডিলেট বা নষ্ট হয়ে গেলেও গিট হিস্ট্রি থেকে সম্পূর্ণ কোড ফিরিয়ে আনা যায়।
+                        </li>
+                    </ul>
+
+                    <div class="note-box tip">
+                        <h4><i class="fa-solid fa-lightbulb"></i> মনে রাখুন:</h4>
+                        <p>গিট শিখলে আপনার কোডের ইতিহাস বা হিস্ট্রি কখনো হারাবে না! আপনি আত্মবিশ্বাসের সাথে কোড এডিট করতে পারবেন।</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: Git vs GitHub -->
+            <section id="sec-git-vs-github" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ০২</div>
+                    <h1>Git বনাম GitHub</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        অনেকেই গিট (Git) এবং গিটহাব (GitHub) কে একই জিনিস মনে করেন, কিন্তু তাদের মধ্যে স্পষ্ট পার্থক্য রয়েছে। সংক্ষেপে বলতে গেলে:
+                    </p>
+                    
+                    <div class="vs-container">
+                        <div class="vs-card git-card">
+                            <div class="vs-header">
+                                <i class="fa-brands fa-git-alt"></i>
+                                <h2>Git (গিট)</h2>
+                            </div>
+                            <div class="vs-body">
+                                <ul>
+                                    <li> এটি একটি <strong>সফটওয়্যার (Software)</strong>।</li>
+                                    <li> এটি লোকাল কম্পিউটারেই কাজ করে <strong>(Local System)</strong>।</li>
+                                    <li> এটি ফাইল ট্র্যাকিং এবং ভার্সন কন্ট্রোল করে।</li>
+                                    <li> ইন্টারনেট ছাড়াও সম্পূর্ণ <strong>অফলাইনে</strong> কাজ করা যায়।</li>
+                                    <li> কোড আপনার নিজের কম্পিউটারে জমা থাকে।</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="vs-divider">VS</div>
+
+                        <div class="vs-card github-card">
+                            <div class="vs-header">
+                                <i class="fa-brands fa-github"></i>
+                                <h2>GitHub (গিটহাব)</h2>
+                            </div>
+                            <div class="vs-body">
+                                <ul>
+                                    <li> এটি একটি <strong>ওয়েব সার্ভিস (Web Service)</strong>।</li>
+                                    <li> এটি একটি ক্লাউড বা ইন্টারনেট ভিত্তিক হোস্টিং সার্ভিস <strong>(Cloud)</strong>।</li>
+                                    <li> এটি গিট রিপোজিটরিগুলো অনলাইনে হোস্ট করতে সাহায্য করে।</li>
+                                    <li> এটি ব্যবহার করার জন্য <strong>ইন্টারনেট কানেকশন</strong> প্রয়োজন।</li>
+                                    <li> কোড ইন্টারনেটে ক্লাউড স্টোরেজে জমা থাকে।</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note-box info">
+                        <h4><i class="fa-solid fa-circle-info"></i> গোল্ডেন রুল:</h4>
+                        <p><strong>Git</strong> হলো আপনার লোকাল কাজের টুল, আর <strong>GitHub</strong> হলো আপনার করা কাজ অন্য সবার সাথে শেয়ার ও ব্যাকআপ রাখার ক্লাউড প্ল্যাটফর্ম।</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: Git Stages -->
+            <section id="sec-git-stages" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ০৩</div>
+                    <h1>Git-এর ৩টি স্টেজ (3 Stages of Git)</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        গিটে আমাদের কাজ মূলত তিনটি প্রধান ধাপে বা স্টেজে সম্পন্ন হয়। এই ধাপগুলো বুঝতে পারলে গিটের পুরো প্রসেস বোঝা খুবই সহজ হয়ে যায়।
+                    </p>
+
+                    <div class="stages-visual">
+                        <div class="stage-box working">
+                            <div class="stage-num">১</div>
+                            <h4>Working Directory</h4>
+                            <p>যেখানে আমরা ফাইল তৈরি বা এডিট করি</p>
+                        </div>
+                        <div class="stage-arrow">
+                            <span>git add</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                        <div class="stage-box staging">
+                            <div class="stage-num">২</div>
+                            <h4>Staging Area</h4>
+                            <p>ফাইলগুলোকে কমিট করার জন্য প্রস্তুত করা (Index)</p>
+                        </div>
+                        <div class="stage-arrow">
+                            <span>git commit</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                        <div class="stage-box repo">
+                            <div class="stage-num">৩</div>
+                            <h4>Git Repository</h4>
+                            <p>ফাইলগুলো স্থায়ীভাবে কমিট ও সেভ হয়ে যায় (.git)</p>
+                        </div>
+                    </div>
+
+                    <h3>সংক্ষেপে মনে রাখার টিপস:</h3>
+                    <div class="steps-container">
+                        <div class="step-item">
+                            <div class="step-num-icon">1</div>
+                            <div>
+                                <strong>git add:</strong> ফাইলগুলোকে Working Directory থেকে Staging Area-তে পাঠায়।
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num-icon">2</div>
+                            <div>
+                                <strong>git commit:</strong> ফাইলগুলোকে Staging Area থেকে Local Repository-তে চিরস্থায়ীভাবে সেভ (snapshot) করে।
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num-icon">3</div>
+                            <div>
+                                <strong>git push:</strong> লোকাল রিপোজিটরি থেকে কোডগুলো ক্লাউডে বা GitHub-এ আপলোড করে দেয়।
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note-box code-explain">
+                        <h4><i class="fa-solid fa-diagram-project"></i> কাজের পুরো প্রবাহ (Workflow):</h4>
+                        <p class="flow-string">Working Directory &rarr; Staging Area &rarr; Git Repository (.git) &rarr; GitHub (Remote)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: First Time Git Setup -->
+            <section id="sec-git-setup" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ০৪</div>
+                    <h1>প্রথমবার GitHub-এ কোড পুশ (Setup Steps)</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        প্রথমবার কোনো প্রজেক্ট তৈরি করে সেটি গিটহাবে আপলোড করার জন্য নিচের ৯টি সহজ ধাপ অনুসরণ করতে হয়।
+                    </p>
+
+                    <div class="setup-steps">
+                        <div class="setup-step">
+                            <span class="badge-num">১</span>
+                            <div class="setup-desc">
+                                <strong>প্রজেক্ট ফোল্ডার তৈরি করুন:</strong>
+                                <p>আপনার কম্পিউটারে একটি নতুন ফোল্ডার তৈরি করুন।</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>mkdir my-project</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">২</span>
+                            <div class="setup-desc">
+                                <strong>VS Code দিয়ে ফোল্ডারটি ওপেন করুন:</strong>
+                                <p>তৈরি করা ফোল্ডারটি আপনার কোড এডিটরে ওপেন করুন।</p>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৩</span>
+                            <div class="setup-desc">
+                                <strong>গিট ইনিশিয়েট (Git Init) করুন:</strong>
+                                <p>প্রজেক্টে গিট চালু করার জন্য নিচের কমান্ডটি রান করুন। এর ফলে ফোল্ডারে একটি ইনভিজিবল <code>.git</code> ফোল্ডার তৈরি হবে।</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>git init</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৪</span>
+                            <div class="setup-desc">
+                                <strong>ফাইলসমূহ Staging-এ যুক্ত করুন:</strong>
+                                <p>ফোল্ডারের সব ফাইল ট্র্যাকিং তালিকায় যুক্ত করতে <code>.</code> (ডট) ব্যবহার করে কমান্ডটি লিখুন।</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>git add .</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৫</span>
+                            <div class="setup-desc">
+                                <strong>প্রথম কমিট (Commit) করুন:</strong>
+                                <p>সব ফাইল লোকাল রিপোজিটরিতে সেভ করার জন্য একটি অর্থবহ মেসেজ দিয়ে কমিট করুন।</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>git commit -m "first commit"</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৬</span>
+                            <div class="setup-desc">
+                                <strong>ডিফল্ট ব্রাঞ্চ 'main' নির্ধারণ করুন:</strong>
+                                <p>আপনার ডিফল্ট কাজের ব্রাঞ্চের নাম <code>main</code> সেট করুন।</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>git branch -M main</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৭</span>
+                            <div class="setup-desc">
+                                <strong>GitHub-এ একটি রিপোজিটরি তৈরি করে URL কপি করুন:</strong>
+                                <p>গিটহাব অ্যাকাউন্টে গিয়ে একটি নতুন Repository তৈরি করুন এবং তার HTTPS বা SSH লিঙ্কটি কপি করে আনুন।</p>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৮</span>
+                            <div class="setup-desc">
+                                <strong>রিমোট অরিজিন (Remote Origin) সেট করুন:</strong>
+                                <p>কপি করা গিটহাব লিঙ্কটি আপনার লোকাল প্রোজেক্টের সাথে যুক্ত করার জন্য নিচের কমান্ডটি দিন।</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>git remote add origin https://github.com/username/repo-name.git</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৯</span>
+                            <div class="setup-desc">
+                                <strong>কোড পুশ (Push) করুন:</strong>
+                                <p>লোকাল প্রজেক্টের সব কোড গিটহাবে পাঠানোর জন্য নিচের কমান্ডটি রান করুন।</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>git push -u origin main</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: Subsequent Push -->
+            <section id="sec-subsequent-push" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ০৫</div>
+                    <h1>পরবর্তী সময়ে পরিবর্তন পুশ করার নিয়ম</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        একবার প্রজেক্টের সাথে GitHub কানেক্ট হয়ে গেলে, পরবর্তীতে ফাইলে নতুন কোনো কোড পরিবর্তন বা সংযোজন করার পর গিটহাবে পুশ করার প্রসেসটি অত্যন্ত সংক্ষিপ্ত। তখন আর বার বার ইনিশিয়ালাইজ বা রিমোট লিঙ্ক যোগ করতে হয় না।
+                    </p>
+
+                    <h3>মাত্র ৩টি সহজ কমান্ড:</h3>
+                    
+                    <div class="shortcut-steps">
+                        <div class="card-step">
+                            <span class="step-indicator">কমান্ড ১</span>
+                            <h4>পরিবর্তনগুলো যুক্ত করুন</h4>
+                            <p>সব নতুন বা পরিবর্তিত ফাইল স্টেজিং এরিয়াতে যোগ করার কমান্ড:</p>
+                            <div class="code-wrapper">
+                                <div class="code-header">
+                                        <span>Terminal</span>
+                                    <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                </div>
+                                <pre><code>git add .</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="card-step">
+                            <span class="step-indicator">কমান্ড ২</span>
+                            <h4>কমিট করুন</h4>
+                            <p>পরিবর্তনের একটি ছোট বিবরণ দিয়ে স্ন্যাপশট সেভ করার কমান্ড:</p>
+                            <div class="code-wrapper">
+                                <div class="code-header">
+                                        <span>Terminal</span>
+                                    <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                </div>
+                                <pre><code>git commit -m "update message"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="card-step">
+                            <span class="step-indicator">কমান্ড ৩</span>
+                            <h4>সরাসরি পুশ করুন</h4>
+                            <p>নতুন কমিটগুলো সরাসরি রিমোট রিপোজিটরিতে পাঠিয়ে দেয়ার কমান্ড:</p>
+                            <div class="code-wrapper">
+                                <div class="code-header">
+                                        <span>Terminal</span>
+                                    <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                </div>
+                                <pre><code>git push</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note-box success">
+                        <h4><i class="fa-solid fa-circle-check"></i> কাজ শেষ!</h4>
+                        <p>এই ৩টি কমান্ড রান করার সাথে সাথেই আপনার পরিবর্তিত কোড গিটহাবে নিরাপদে আপডেট হয়ে যাবে।</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: Important Commands -->
+            <section id="sec-important-commands" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ০৬</div>
+                    <h1>গুরুত্বপূর্ণ কমান্ডসমূহ (Git Commands Cheat Sheet)</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        নিচে দৈনন্দিন কাজে সবচেয়ে বেশি ব্যবহৃত গিট কমান্ডগুলোর একটি তালিকা দেওয়া হলো। এই কমান্ডগুলো ভালোভাবে অনুশীলন করলে কাজ অনেক সহজ হয়ে যাবে।
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="cheat-table">
+                            <thead>
+                                <tr>
+                                    <th>কমান্ড (Command)</th>
+                                    <th>ব্যবহার (Usage)</th>
+                                    <th>উদাহরণ (Example)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="cmd-code">git init</code></td>
+                                    <td>নতুন লোকাল রিপোজিটরি শুরু করতে</td>
+                                    <td><code class="ex-code">git init</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git status</code></td>
+                                    <td>ফাইলের বর্তমান অবস্থা (Tracked/Untracked) দেখতে</td>
+                                    <td><code class="ex-code">git status</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git add .</code></td>
+                                    <td>সব পরিবর্তন Staging Area-তে যোগ করতে</td>
+                                    <td><code class="ex-code">git add .</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git add &lt;file&gt;</code></td>
+                                    <td>নির্দিষ্ট কোনো ফাইল Staging-এ যোগ করতে</td>
+                                    <td><code class="ex-code">git add index.html</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git commit -m "msg"</code></td>
+                                    <td>স্টেজড ফাইলগুলো রিপোজিটরিতে চিরতরে সেভ করতে</td>
+                                    <td><code class="ex-code">git commit -m "feat: navbar"</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git log</code></td>
+                                    <td>কমিটের ইতিহাস বা পূর্বের কাজের লিস্ট দেখতে</td>
+                                    <td><code class="ex-code">git log</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git diff</code></td>
+                                    <td>ফাইলে কী কী পরিবর্তন করা হয়েছে তা তুলনা করতে</td>
+                                    <td><code class="ex-code">git diff</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git branch</code></td>
+                                    <td>প্রজেক্টের সকল ব্রাঞ্চের নাম দেখতে</td>
+                                    <td><code class="ex-code">git branch</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git branch &lt;name&gt;</code></td>
+                                    <td>নতুন কোনো ব্রাঞ্চ তৈরি করতে</td>
+                                    <td><code class="ex-code">git branch feature-login</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git switch &lt;branch&gt;</code></td>
+                                    <td>একটি ব্রাঞ্চ থেকে অন্য ব্রাঞ্চে পরিবর্তন করতে</td>
+                                    <td><code class="ex-code">git switch feature-login</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git merge &lt;branch&gt;</code></td>
+                                    <td>অন্য কোনো ব্রাঞ্চকে বর্তমান ব্রাঞ্চের সাথে যুক্ত করতে</td>
+                                    <td><code class="ex-code">git merge feature-login</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git remote -v</code></td>
+                                    <td>যুক্ত রিমোট রিপোজিটরির লিস্ট দেখতে</td>
+                                    <td><code class="ex-code">git remote -v</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git push -u origin main</code></td>
+                                    <td>প্রথমবার রিমোটে কোড আপলোড এবং ট্র্যাকিং সেট করতে</td>
+                                    <td><code class="ex-code">git push -u origin main</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git pull</code></td>
+                                    <td>গিটহাব থেকে লেটেস্ট কোড লোকাল প্রজেক্টে টেনে আনতে</td>
+                                    <td><code class="ex-code">git pull</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="cmd-code">git clone &lt;url&gt;</code></td>
+                                    <td>অনলাইনের কোনো প্রজেক্ট নিজের কম্পিউটারে ডাউনলোড করতে</td>
+                                    <td><code class="ex-code">git clone https://github.com/...</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="note-box tip">
+                        <h4><i class="fa-solid fa-lightbulb"></i> কাজের টিপস:</h4>
+                        <p>প্রতিবার কাজ করার শুরুতে এবং মাঝে মাঝে <code>git status</code> দিয়ে দেখে নিন ফাইলের বর্তমান অবস্থা কী। এতে ভুল এড়ানো সহজ হয়!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: Branches -->
+            <section id="sec-branches" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ০৭</div>
+                    <h1>Branch (ব্রাঞ্চ) কী ও প্রয়োজনীয় কমান্ডসমূহ</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        <strong>Branch (ব্রাঞ্চ)</strong> মানে হলো আলাদা একটি কাজের লাইন! প্রজেক্টের মূল কোড (main বা master branch) নষ্ট না করে স্বাধীনভাবে কোনো নতুন ফিচার বা আইডিয়া নিয়ে কাজ করার সুবিধাকে ব্রাঞ্চিং বলা হয়।
+                    </p>
+
+                    <div class="illustration-container">
+                        <div class="branch-diagram">
+                            <div class="branch-line main-line">
+                                <span class="branch-title">main branch</span>
+                                <div class="branch-dots">
+                                    <span class="dot" title="Commit 1"></span>
+                                    <span class="dot" title="Commit 2"></span>
+                                    <span class="dot" title="Commit 3"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="branch-line feature-line">
+                                <span class="branch-title">feature-1 branch</span>
+                                <div class="branch-dots">
+                                    <span class="dot" title="Feature Commit 1"></span>
+                                    <span class="dot" title="Feature Commit 2"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>ব্রাঞ্চিং-এর দরকার কেন?</h3>
+                    <ul class="styled-list">
+                        <li>আপনি যখন নতুন কোনো ফিচার তৈরি করছেন, তখন প্রজেক্টের মেইন কোড সচল থাকে।</li>
+                        <li>একই প্রজেক্টে একাধিক ডেভেলপার আলাদা আলাদা ব্রাঞ্চ তৈরি করে একে অপরের কাজে ইন্টারফেয়ার না করে কাজ করতে পারেন।</li>
+                    </ul>
+
+                    <h3>গুরুত্বপূর্ণ কমান্ডসমূহ:</h3>
+                    
+                    <div class="code-desc-pair">
+                        <p><strong>১. নতুন ব্রাঞ্চ তৈরি করা:</strong></p>
+                        <div class="code-wrapper">
+                            <div class="code-header">
+                                        <span>Terminal</span>
+                                <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                            </div>
+                            <pre><code>git branch &lt;branch-name&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-desc-pair">
+                        <p><strong>২. ব্রাঞ্চে মুভ বা পরিবর্তন করা:</strong></p>
+                        <div class="code-wrapper">
+                            <div class="code-header">
+                                        <span>Terminal</span>
+                                <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                            </div>
+                            <pre><code>git switch &lt;branch-name&gt;  # অথবা git checkout &lt;branch-name&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-desc-pair">
+                        <p><strong>৩. সকল ব্রাঞ্চের তালিকা দেখা:</strong></p>
+                        <div class="code-wrapper">
+                            <div class="code-header">
+                                        <span>Terminal</span>
+                                <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                            </div>
+                            <pre><code>git branch</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-desc-pair">
+                        <p><strong>৪. অন্য ব্রাঞ্চকে নিজের ব্রাঞ্চের সাথে মার্জ বা যুক্ত করা:</strong></p>
+                        <div class="code-wrapper">
+                            <div class="code-header">
+                                        <span>Terminal</span>
+                                <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                            </div>
+                            <pre><code>git merge &lt;branch-name&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: Merge & Conflict -->
+            <section id="sec-merge-conflict" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ০৮</div>
+                    <h1>Merge & Conflict (মার্জ ও কনফ্লিক্ট)</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        কোড মার্জিং চমৎকার হলেও মাঝে মাঝে গিটের কাজে কনফ্লিক্ট দেখা দেয়। এটি ডেভেলপমেন্টের একটি অত্যন্ত স্বাভাবিক অংশ।
+                    </p>
+
+                    <h3>কনফ্লিক্ট কখন হয়?</h3>
+                    <p>
+                        যখন দুইজন প্রোগ্রামার একই ফাইলের <strong>একই লাইনে</strong> আলাদা আলাদা কোড পরিবর্তন করেন, অথবা একজন একটি ফাইল ডিলেট করে দেন আর অন্যজন ওই ফাইলটি এডিট করেন, তখন গিট নিজে থেকে সিদ্ধান্ত নিতে পারে না যে কার কোডটি রাখা হবে। গিট তখন মার্জিং থামিয়ে দেয় এবং একটি <strong>Conflict</strong> তৈরি করে।
+                    </p>
+
+                    <div class="conflict-visual">
+                        <div class="conflict-marker header-marker">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (Current Change)</div>
+                        <div class="conflict-content current">const apiURL = "https://api.mylocalhost.dev";</div>
+                        <div class="conflict-marker divider-marker">=======</div>
+                        <div class="conflict-content incoming">const apiURL = "https://api.productionserver.com";</div>
+                        <div class="conflict-marker footer-marker">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-api (Incoming Change)</div>
+                    </div>
+
+                    <h3>কনফ্লিক্ট সমাধানের উপায়:</h3>
+                    <ol class="styled-list-ol">
+                        <li>VS Code বা এডিটরে ফাইলটি ওপেন করলে উপরের ছবির মতো অপশন দেখতে পাবেন।</li>
+                        <li>সেখানে ৩টি অপশন থাকে:
+                            <ul>
+                                <li><strong>Accept Current Change:</strong> নিজের ব্রাঞ্চের কোডটি রাখতে।</li>
+                                <li><strong>Accept Incoming Change:</strong> অন্য ব্রাঞ্চ থেকে আসা নতুন কোডটি রাখতে।</li>
+                                <li><strong>Accept Both Changes:</strong> দুটি কোডই একসাথে রাখতে।</li>
+                            </ul>
+                        </li>
+                        <li>পছন্দমতো অপশন ক্লিক করে ফাইলটি সেভ করুন।</li>
+                        <li>তারপর আবার স্বাভাবিকভাবে ফাইলটি স্টেজিং ও কমিট করুন:
+                            <div class="code-wrapper">
+                                <div class="code-header">
+                                        <span>Terminal</span>
+                                    <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                </div>
+                                <pre><code>git add .
+git commit -m "Resolved merge conflict"</code></pre>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- SECTION 9: Fork, Clone, PR -->
+            <section id="sec-fork-clone-pr" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ০৯</div>
+                    <h1>Fork, Clone এবং Pull Request</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        ওপেন সোর্স প্রজেক্টে বা কোনো টিমের সাথে কাজ করার ক্ষেত্রে এই তিনটি শব্দ বা ধারণা বহুল ব্যবহূত হয়।
+                    </p>
+
+                    <div class="collaboration-grid">
+                        <div class="collab-item">
+                            <div class="collab-icon"><i class="fa-solid fa-code-fork"></i></div>
+                            <h3>Fork (ফোর্ক)</h3>
+                            <p>অন্য কোনো ডেভেলপারের গিটহাব রিপোজিটরি সম্পূর্ণ কপি করে আপনার নিজের গিটহাব অ্যাকাউন্টে একটি কপি তৈরি করা। এটি সম্পূর্ণ অনলাইন প্রসেস।</p>
+                        </div>
+                        <div class="collab-item">
+                            <div class="collab-icon"><i class="fa-solid fa-download"></i></div>
+                            <h3>Clone (ক্লোন)</h3>
+                            <p>গিটহাবের কোনো অনলাইন রিপোজিটরিকে আপনার কম্পিউটারে (লোকালে) ডাউনলোড বা নিয়ে আসা। এর ফলে লোকাল কম্পিউটারে কাজ করা যায়।</p>
+                            <div class="code-wrapper mini-code">
+                                <pre><code>git clone &lt;repo-url&gt;</code></pre>
+                            </div>
+                        </div>
+                        <div class="collab-item">
+                            <div class="collab-icon"><i class="fa-solid fa-code-pull-request"></i></div>
+                            <h3>Pull Request (PR)</h3>
+                            <p>ফোর্ক বা ক্লোন করা প্রজেক্টে আপনি কোনো কাজ শেষ করার পর, মূল রিপোজিটরির ওনার বা মেইন্টেইনারের কাছে আপনার করা কোডগুলো উনার মূল প্রজেক্টে যুক্ত (Merge) করার জন্য রিকোয়েস্ট পাঠানো।</p>
+                        </div>
+                    </div>
+
+                    <div class="illustration-container">
+                        <div class="collab-flow">
+                            <div class="flow-box">Original Repo (GitHub)</div>
+                            <div class="flow-arrow-dir"><i class="fa-solid fa-arrow-right"></i> <span>Fork</span></div>
+                            <div class="flow-box">Your Repo (GitHub)</div>
+                            <div class="flow-arrow-dir"><i class="fa-solid fa-arrow-right"></i> <span>Clone</span></div>
+                            <div class="flow-box">Your Computer</div>
+                        </div>
+                        <div class="collab-flow-back">
+                            <div class="flow-box-light">Your Computer (Push)</div>
+                            <div class="flow-arrow-dir-back"><i class="fa-solid fa-arrow-right"></i> <span>Pull Request (PR)</span></div>
+                            <div class="flow-box-light">Original Repo (GitHub)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 10: Keyboard Shortcuts -->
+            <section id="sec-keyboard-shortcuts" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ১০</div>
+                    <h1>কীবোর্ড শর্টকাট (VS Code Terminal + Git)</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        মাউস ছাড়াই কিবোর্ড দিয়ে দ্রুত কমান্ড রান করতে এবং টার্মিনাল ম্যানেজ করতে এই শর্টকাটগুলো সাহায্য করবে।
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="shortcut-table">
+                            <thead>
+                                <tr>
+                                    <th>কাজ (Action)</th>
+                                    <th>শর্টকাট - Windows / Linux</th>
+                                    <th>শর্টকাট - macOS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>টার্মিনাল ওপেন/হাইড করতে</strong></td>
+                                    <td><kbd>Ctrl</kbd> + <kbd>`</kbd></td>
+                                    <td><kbd>Ctrl</kbd> + <kbd>`</kbd></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>নতুন টার্মিনাল উইন্ডো খুলতে</strong></td>
+                                    <td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>`</kbd></td>
+                                    <td><kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>`</kbd></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>টার্মিনাল স্ক্রিন ক্লিয়ার করতে</strong></td>
+                                    <td>টাইপ করুন: <code class="short-code">cls</code> অথবা <kbd>Ctrl</kbd> + <kbd>L</kbd></td>
+                                    <td>টাইপ করুন: <code class="short-code">clear</code> অথবা <kbd>Cmd</kbd> + <kbd>K</kbd></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>পূর্বের কমান্ড পুনরায় টাইপ করতে</strong></td>
+                                    <td><kbd>&uarr;</kbd> (Up Arrow)</td>
+                                    <td><kbd>&uarr;</kbd> (Up Arrow)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>কমান্ডের সাজেস্ট করা অটো-কমপ্লিট করতে</strong></td>
+                                    <td><kbd>Tab</kbd></td>
+                                    <td><kbd>Tab</kbd></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>চলতি কোনো কমান্ড বা প্রসেস বাতিল করতে</strong></td>
+                                    <td><kbd>Ctrl</kbd> + <kbd>C</kbd></td>
+                                    <td><kbd>Ctrl</kbd> + <kbd>C</kbd></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 11: Beginner Errors -->
+            <section id="sec-beginner-errors" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ১১</div>
+                    <h1>সাধারণ কিছু ভুল ও সমাধান (Common Errors)</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        গিট ব্যবহার শুরু করার পর নতুনদের সাধারণ কিছু ভুল বা এরর দেখা দেয়। নিচে প্রধান কয়েকটি সমস্যা ও তাদের সহজ সমাধান দেওয়া হলো:
+                    </p>
+
+                    <div class="error-accordion">
+                        <div class="error-item">
+                            <div class="error-header">
+                                <span class="error-msg"><i class="fa-solid fa-triangle-exclamation"></i> fatal: not a git repository</span>
+                                <i class="fa-solid fa-chevron-down fold-icon"></i>
+                            </div>
+                            <div class="error-body">
+                                <p><strong>কারণ:</strong> ফোল্ডারটি গিট দ্বারা ট্র্যাকিং করা হচ্ছে না অথবা আপনি ভুল ফোল্ডারে আছেন।</p>
+                                <p><strong>সমাধান:</strong> কমান্ডটি রান করুন গিট ইনিশিয়ালাইজ করতে:</p>
+                                <pre><code>git init</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="error-item">
+                            <div class="error-header">
+                                <span class="error-msg"><i class="fa-solid fa-triangle-exclamation"></i> fatal: failed to push some refs</span>
+                                <i class="fa-solid fa-chevron-down fold-icon"></i>
+                            </div>
+                            <div class="error-body">
+                                <p><strong>কারণ:</strong> রিমোট সার্ভারে (GitHub) নতুন কোনো আপডেট আছে যা আপনার লোকাল কম্পিউটারে নেই।</p>
+                                <p><strong>সমাধান:</strong> আগে রিমোটের পরিবর্তনগুলো টেনে আনুন (Pull), তারপর পুশ করুন:</p>
+                                <pre><code>git pull
+# তারপর
+git push</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="error-item">
+                            <div class="error-header">
+                                <span class="error-msg"><i class="fa-solid fa-triangle-exclamation"></i> fatal: remote origin already exists</span>
+                                <i class="fa-solid fa-chevron-down fold-icon"></i>
+                            </div>
+                            <div class="error-body">
+                                <p><strong>কারণ:</strong> আপনার লোকাল প্রজেক্টে ইতিমধ্যে অন্য একটি রিমোট অরিজিনাল লিঙ্ক যুক্ত করা আছে।</p>
+                                <p><strong>সমাধান:</strong> রিমোট অরিজিন এর URL টি আপডেট করার জন্য নিচের কমান্ডটি দিন:</p>
+                                <pre><code>git remote set-url origin &lt;new-github-url&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="error-item">
+                            <div class="error-header">
+                                <span class="error-msg"><i class="fa-solid fa-triangle-exclamation"></i> Permission denied (publickey)</span>
+                                <i class="fa-solid fa-chevron-down fold-icon"></i>
+                            </div>
+                            <div class="error-body">
+                                <p><strong>কারণ:</strong> গিটহাবের সাথে আপনার কম্পিউটার বা টার্মিনালের অথেন্টিকেশন সঠিক নয়।</p>
+                                <p><strong>সমাধান:</strong> আপনার গিটহাব একাউন্টে পুনরায় লগইন করুন অথবা SSH Key সেটআপ করুন।</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note-box info">
+                        <h4><i class="fa-solid fa-info-circle"></i> টিপস:</h4>
+                        <p>টার্মিনালের এরর মেসেজটি ভালো করে পড়ুন। বেশিরভাগ গিট এররের নিচে সমাধান কী হতে পারে তার একটি গাইডলাইন দেওয়াই থাকে!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 12: GitHub Pages -->
+            <section id="sec-github-pages" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ১২</div>
+                    <h1>GitHub Pages-এ প্রজেক্ট লাইভ পাবলিশ করা</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        GitHub-এর একটি চমৎকার সুবিধা হলো <strong>GitHub Pages</strong>। এর মাধ্যমে আপনি যেকোনো স্ট্যাটিক (HTML, CSS & JS) প্রজেক্ট একদম ফ্রিতে ইন্টারনেটে লাইভ হোস্ট করতে পারেন।
+                    </p>
+
+                    <h3>ধাপসমূহ:</h3>
+                    <ul class="styled-list-ol">
+                        <li>
+                            <strong>প্রধান শর্ত:</strong> আপনার প্রজেক্টের রুট ডিরেক্টরিতে একটি <code>index.html</code> ফাইল থাকতে হবে।
+                        </li>
+                        <li>
+                            আপনার কোডগুলো গিটের মাধ্যমে গিটহাবে পুশ করে দিন।
+                        </li>
+                        <li>
+                            গিটহাবে আপনার প্রজেক্টের রিপোজিটরিতে প্রবেশ করুন এবং ডানদিকের <strong>Settings</strong> অপশনে ক্লিক করুন।
+                        </li>
+                        <li>
+                            বামদিকের মেনুবার থেকে <strong>Pages</strong> ট্যাবে ক্লিক করুন।
+                        </li>
+                        <li>
+                            <strong>Build and deployment</strong> সেকশনে:
+                            <ul>
+                                <li>Source: <em>Deploy from a branch</em> সিলেক্ট করুন।</li>
+                                <li>Branch: <em>main</em> এবং ফোল্ডার <em>/(root)</em> সিলেক্ট করুন।</li>
+                            </ul>
+                        </li>
+                        <li>
+                            সবশেষে <strong>Save</strong> বাটনে ক্লিক করুন।
+                        </li>
+                        <li>
+                            ১-২ মিনিট পর রিফ্রেশ করলে পেজের উপরে আপনার প্রজেক্টের লাইভ লিঙ্কটি দেখতে পাবেন (যেমন: <code>https://username.github.io/reponame</code>)।
+                        </li>
+                    </ul>
+
+                    <div class="note-box success">
+                        <h4><i class="fa-solid fa-globe"></i> অভিনন্দন!</h4>
+                        <p>এখন আপনার তৈরি করা ওয়েবসাইটটি পৃথিবীর যেকোনো প্রান্ত থেকে ইন্টারনেটের মাধ্যমে দেখা যাবে।</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 13: .gitignore -->
+            <section id="sec-gitignore" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">টপিক ১৩</div>
+                    <h1>.gitignore কী এবং এর ব্যবহার</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        প্রজেক্টের কাজের সময় এমন অনেক ফাইল তৈরি হয় যা আমরা গিটহাবে আপলোড করতে চাই না। যেমন: সিক্রেট পাসওয়ার্ড ফাইল (<code>.env</code>), থার্ড পার্টি মডিউল (<code>node_modules/</code>) অথবা লোকাল ক্যাশ ফাইল। এই ফাইলগুলোকে এড়াতে গিট প্রজেক্টে <code>.gitignore</code> ব্যবহার করা হয়।
+                    </p>
+
+                    <h3>কীভাবে ব্যবহার করবেন?</h3>
+                    <p>
+                        প্রজেক্টের রুট ফোল্ডারে <code>.gitignore</code> নামে একটি ফাইল তৈরি করুন (ফাইলের নামের আগে ডট দিতে ভুলবেন না)। তারপর যে যে ফাইল বা ফোল্ডার বাদ দিতে চান, সেগুলোর নাম ফাইলের ভেতর প্রতি লাইনে একটি করে লিখে সেভ করুন।
+                    </p>
+
+                    <h3>একটি আদর্শ .gitignore ফাইলের উদাহরণ:</h3>
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span>.gitignore</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code># dependencies (লাইব্রেরি)
+node_modules/
+
+# local env variables (গোপন চাবি ও পাসওয়ার্ড)
+.env
+.env.local
+
+# production build (তৈরি হওয়া কোড)
+dist/
+build/
+
+# system files (কম্পিউটারের ফাইল)
+.DS_Store
+Thumbs.db
+
+# log files (লগ ফাইল)
+*.log</code></pre>
+                    </div>
+
+                    <div class="note-box warning">
+                        <h4><i class="fa-solid fa-triangle-exclamation"></i> গুরুত্বপূর্ণ সতর্কতা:</h4>
+                        <p>কখনো আপনার API Key, Database Password বা <code>.env</code> ফাইল গিটহাবে পুশ করবেন না। এটি আপনার প্রজেক্টের সিকিউরিটির জন্য অত্যন্ত ঝুঁকিপূর্ণ।</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation buttons at the bottom -->
+            <div class="navigation-controls">
+                <button id="prevBtn" class="nav-control-btn"><i class="fa-solid fa-chevron-left"></i> পূর্ববর্তী পেজ</button>
+                <div id="readProgressBtnContainer">
+                    <button id="markReadBtn" class="nav-control-btn mark-read-btn"><i class="fa-regular fa-square-check"></i> পড়া শেষ হয়েছে</button>
+                </div>
+                <button id="nextBtn" class="nav-control-btn">পরবর্তী পেজ <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <p>&copy; 2026 GitLearn. Made with <i class="fa-solid fa-heart" style="color: #ff4757;"></i> for learners. <button class="reset-progress-btn" onclick="resetAllProgress()">অগ্রগতি রিসেট করুন</button></p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>

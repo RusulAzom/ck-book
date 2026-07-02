@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheets - শিখুন সহজে | CK Book</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle Sidebar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="logo">
+                <i class="fa-solid fa-book-open logo-icon"></i>
+                <span class="logo-text">CK <span>Book</span></span>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+            <a href="index.html#vcs" class="nav-link">Git & GitHub</a>
+            <a href="#" class="nav-link disabled" onclick="alert('HTML & CSS modules are coming soon!')">HTML</a>
+            <a href="#" class="nav-link disabled" onclick="alert('JavaScript modules are coming soon!')">JavaScript</a>
+            <a href="cheatsheet.html" class="nav-link nav-btn-cheatsheet active">
+                <i class="fa-solid fa-file-code"></i> Cheat Sheet
+            </a>
+            <a href="contribute.html" class="nav-link nav-btn-contribute">
+                <i class="fa-solid fa-handshake-angle"></i> Contribute
+            </a>
+        </nav>
+
+        <div class="header-right">
+            <div class="theme-switch-wrapper">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Light/Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Layout -->
+    <div class="app-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="topicSearch" placeholder="মডিউল খুঁজুন...">
+                </div>
+            </div>
+
+            <nav class="sidebar-links" id="sidebarLinks">
+                <div class="sidebar-group-title">মডিউল তালিকা</div>
+                
+                <a href="#html-cheatsheet" class="sidebar-link active" data-id="html-cheatsheet">
+                    <i class="fa-brands fa-html5" style="color: #e34c26;"></i>
+                    <span class="link-text">মডিউল ১: HTML Cheat Sheet</span>
+                </a>
+                <a href="#github-cheatsheet" class="sidebar-link" data-id="github-cheatsheet">
+                    <i class="fa-brands fa-github" style="color: #f1502f;"></i>
+                    <span class="link-text">মডিউল ২: GitHub Cheat Sheet</span>
+                </a>
+                <a href="#css-cheatsheet" class="sidebar-link" data-id="css-cheatsheet">
+                    <i class="fa-brands fa-css3-alt" style="color: #264de4;"></i>
+                    <span class="link-text">মডিউল ৩: CSS Cheat Sheet</span>
+                </a>
+                <a href="#js-cheatsheet" class="sidebar-link" data-id="js-cheatsheet">
+                    <i class="fa-brands fa-js" style="color: #f7df1e;"></i>
+                    <span class="link-text">মডিউল ৪: JavaScript Cheat Sheet</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            
+            <!-- SECTION 1: HTML Cheat Sheet -->
+            <section id="sec-html-cheatsheet" class="content-section active">
+                <div class="content-card">
+                    <div class="section-badge">মডিউল ০১</div>
+                    <h1>HTML Cheat Sheet</h1>
+                    <div class="divider"></div>
+                    
+                    <p class="intro-text">
+                        নিচে শিক্ষার্থীদের জন্য অত্যন্ত প্রয়োজনীয় HTML এর ব্যাসিক চিট শিট বা হ্যান্ড নোটগুলো শেয়ার করা হলো। এই কার্ডে ক্লিক করে সরাসরি প্রিভিউ দেখতে পারেন এবং ডাউনলোড বোতামে ক্লিক করে সহজে নিজের ডিভাইসে ডাউনলোড করতে পারেন।
+                    </p>
+
+                    <!-- Gallery Grid -->
+                    <div class="cheatsheet-gallery">
+                        <!-- Card 1 -->
+                        <div class="gallery-card">
+                            <div class="gallery-image-container" onclick="openLightbox('imgs/cheatsheet/module 1/html basic cheet sheet mo 1.jpg', 'HTML Basic Cheat Sheet')">
+                                <img src="imgs/cheatsheet/module 1/html basic cheet sheet mo 1.jpg" alt="HTML Basic Cheat Sheet">
+                                <div class="gallery-image-overlay">
+                                    <div class="preview-icon-wrapper">
+                                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h3 class="gallery-title">HTML Basic Cheat Sheet</h3>
+                                <div class="gallery-author">
+                                    <span>লেখক:</span>
+                                    <a href="https://www.facebook.com/profile.php?id=61589397682138" target="_blank" class="author-link">
+                                        <i class="fa-brands fa-facebook"></i> Rusul Azom Sumon
+                                    </a>
+                                </div>
+                                <a href="imgs/cheatsheet/module 1/html basic cheet sheet mo 1.jpg" download="html-basic-cheatsheet.jpg" class="gallery-download-btn">
+                                    <i class="fa-solid fa-download"></i> ডাউনলোড করুন
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: GitHub Cheat Sheet -->
+            <section id="sec-github-cheatsheet" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">মডিউল ০২</div>
+                    <h1>GitHub Cheat Sheet</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        নিচে গিট ও গিটহাব শেখার জন্য তৈরি করা চমৎকার হ্যান্ড নোট এবং শর্টকাট চিট শিট শেয়ার করা হলো। নিজের প্রয়োজনে বা রিভিশন দেওয়ার সময় ব্যবহারের জন্য এগুলো ডাউনলোড করে রাখুন।
+                    </p>
+
+                    <!-- Gallery Grid -->
+                    <div class="cheatsheet-gallery">
+                        <!-- Card 1 -->
+                        <div class="gallery-card">
+                            <div class="gallery-image-container" onclick="openLightbox('imgs/cheatsheet/module 2/git & github hand note by PH made by RA Sumon.jpg', 'Git & GitHub Hand Note')">
+                                <img src="imgs/cheatsheet/module 2/git & github hand note by PH made by RA Sumon.jpg" alt="Git & GitHub Hand Note">
+                                <div class="gallery-image-overlay">
+                                    <div class="preview-icon-wrapper">
+                                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h3 class="gallery-title">Git & GitHub Hand Note</h3>
+                                <div class="gallery-author">
+                                    <span>লেখক:</span>
+                                    <a href="https://www.facebook.com/profile.php?id=61589397682138" target="_blank" class="author-link">
+                                        <i class="fa-brands fa-facebook"></i> Rusul Azom Sumon
+                                    </a>
+                                </div>
+                                <a href="imgs/cheatsheet/module 2/git & github hand note by PH made by RA Sumon.jpg" download="git-github-hand-note.jpg" class="gallery-download-btn">
+                                    <i class="fa-solid fa-download"></i> ডাউনলোড করুন
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="gallery-card">
+                            <div class="gallery-image-container" onclick="openLightbox('imgs/cheatsheet/module 2/git github cheat sheet by Programing hero made by rasumon.jpg', 'Git & GitHub Quick Cheat Sheet')">
+                                <img src="imgs/cheatsheet/module 2/git github cheat sheet by Programing hero made by rasumon.jpg" alt="Git & GitHub Quick Cheat Sheet">
+                                <div class="gallery-image-overlay">
+                                    <div class="preview-icon-wrapper">
+                                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h3 class="gallery-title">Git & GitHub Quick Cheat Sheet</h3>
+                                <div class="gallery-author">
+                                    <span>লেখক:</span>
+                                    <a href="https://www.facebook.com/profile.php?id=61589397682138" target="_blank" class="author-link">
+                                        <i class="fa-brands fa-facebook"></i> Rusul Azom Sumon
+                                    </a>
+                                </div>
+                                <a href="imgs/cheatsheet/module 2/git github cheat sheet by Programing hero made by rasumon.jpg" download="git-github-cheat-sheet.jpg" class="gallery-download-btn">
+                                    <i class="fa-solid fa-download"></i> ডাউনলোড করুন
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: CSS Cheat Sheet -->
+            <section id="sec-css-cheatsheet" class="content-section">
+                <div class="content-card" style="text-align: center; padding: 80px 40px; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+                    <div class="section-badge">মডিউল ০৩</div>
+                    <div class="coming-soon-icon" style="font-size: 4.5rem; color: var(--text-muted);"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <h1 style="margin-bottom: 8px;">CSS Cheat Sheet</h1>
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 500px; margin-bottom: 0;">
+                        CSS চিট শিট এবং চমৎকার হ্যান্ড নোট তৈরির কাজ চলমান রয়েছে। খুব শীঘ্রই মডিউলটি শিক্ষার্থীদের জন্য উন্মুক্ত করা হবে!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 4: JS Cheat Sheet -->
+            <section id="sec-js-cheatsheet" class="content-section">
+                <div class="content-card" style="text-align: center; padding: 80px 40px; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+                    <div class="section-badge">মডিউল ০৪</div>
+                    <div class="coming-soon-icon" style="font-size: 4.5rem; color: var(--text-muted);"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <h1 style="margin-bottom: 8px;">JavaScript Cheat Sheet</h1>
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 500px; margin-bottom: 0;">
+                        জাভাস্ক্রিপ্ট এর মূল কনসেপ্টের শর্টকাট এবং চমৎকার চিট শিটগুলো রেডি করা হচ্ছে। আমাদের সাথেই থাকুন!
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox">
+        <button class="lightbox-close" id="lightboxCloseBtn" aria-label="Close Lightbox">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="lightbox-container">
+            <img class="lightbox-img" id="lightboxImg" src="" alt="Cheat Sheet Preview">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <p>&copy; 2026 CK Book. Made with <i class="fa-solid fa-heart" style="color: #ff4757;"></i> for learners.</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="cheatsheet.js"></script>
+</body>
+</html>

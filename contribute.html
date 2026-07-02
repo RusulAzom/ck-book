@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribute Guidelines - CK Book</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle Sidebar">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="logo">
+                <i class="fa-solid fa-book-open logo-icon"></i>
+                <span class="logo-text">CK <span>Book</span></span>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+            <a href="index.html#vcs" class="nav-link">Git & GitHub</a>
+            <a href="#" class="nav-link disabled" onclick="alert('HTML & CSS modules are coming soon!')">HTML</a>
+            <a href="#" class="nav-link disabled" onclick="alert('JavaScript modules are coming soon!')">JavaScript</a>
+            <a href="cheatsheet.html" class="nav-link nav-btn-cheatsheet">
+                <i class="fa-solid fa-file-code"></i> Cheat Sheet
+            </a>
+            <a href="contribute.html" class="nav-link nav-btn-contribute active">
+                <i class="fa-solid fa-handshake-angle"></i> Contribute
+            </a>
+        </nav>
+
+        <div class="header-right">
+            <div class="theme-switch-wrapper">
+                <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Light/Dark Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Layout -->
+    <div class="app-container">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-search">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="topicSearch" placeholder="ধাপ খুঁজুন...">
+                </div>
+            </div>
+
+            <nav class="sidebar-links" id="sidebarLinks">
+                <div class="sidebar-group-title">কন্ট্রিবিউট গাইডলাইন</div>
+                
+                <a href="#intro" class="sidebar-link active" data-id="intro">
+                    <i class="fa-solid fa-circle-info" style="color: var(--primary-blue);"></i>
+                    <span class="link-text">ভূমিকা ও নিয়মাবলী</span>
+                </a>
+                <a href="#fork-clone" class="sidebar-link" data-id="fork-clone">
+                    <i class="fa-solid fa-code-fork" style="color: var(--primary-yellow);"></i>
+                    <span class="link-text">ধাপ ১: ফোর্ক ও ক্লোন</span>
+                </a>
+                <a href="#add-files" class="sidebar-link" data-id="add-files">
+                    <i class="fa-solid fa-file-image" style="color: var(--accent-color);"></i>
+                    <span class="link-text">ধাপ ২: ছবি যুক্ত করা</span>
+                </a>
+                <a href="#update-html" class="sidebar-link" data-id="update-html">
+                    <i class="fa-solid fa-code" style="color: var(--primary-green);"></i>
+                    <span class="link-text">ধাপ ৩: HTML আপডেট করা</span>
+                </a>
+                <a href="#push-pr" class="sidebar-link" data-id="push-pr">
+                    <i class="fa-solid fa-code-pull-request" style="color: #a855f7;"></i>
+                    <span class="link-text">ধাপ ৪: পুশ ও পিআর (PR)</span>
+                </a>
+                <a href="#review-schedule" class="sidebar-link" data-id="review-schedule">
+                    <i class="fa-solid fa-clock" style="color: #0ea5e9;"></i>
+                    <span class="link-text">রিভিউ ও শিডিউল</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Sidebar Overlay for Mobile -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            
+            <!-- SECTION: Intro -->
+            <section id="sec-intro" class="content-section active">
+                <div class="content-card">
+                    <div class="section-badge">ভূমিকা</div>
+                    <h1>CK Book প্রজেক্টে আপনাকে স্বাগতম!</h1>
+                    <div class="divider"></div>
+                    
+                    <p class="intro-text">
+                        আমরা সবাই একসাথে শিখছি! এই ওয়েবসাইটটি আমাদের নিজেদের শেখা সহজ করতে এবং বন্ধুদের সাহায্য করতে তৈরি করা হয়েছে। আপনি যদি আপনার তৈরি করা কোনো চিট শিট বা হ্যান্ড নোট সবার সাথে শেয়ার করতে চান, তবে গিটের (Git) মাধ্যমে এই প্রজেক্টে অবদান (Contribute) রাখতে পারেন। 
+                    </p>
+
+                    <h3>অবদান রাখার সাধারণ নিয়মাবলী:</h3>
+                    <ul class="styled-list">
+                        <li>
+                            <i class="fa-solid fa-circle-check list-icon"></i>
+                            <strong>স্বচ্ছ কোডিং:</strong> আমরা যেহেতু ক্লাসে HTML শিখেছি, তাই আমরা শুধু HTML ফাইল এডিট করেই এই কাজটা করব। কোনো জটিল CSS/JS এডিট করার প্রয়োজন নেই।
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check list-icon"></i>
+                            <strong>ইমেজ কোয়ালিটি:</strong> চিট শিটের ছবিটি যাতে পরিষ্কার এবং পড়ার উপযোগী হয় তা নিশ্চিত করুন।
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check list-icon"></i>
+                            <strong>সঠিক ক্রেডিট:</strong> চিট শিটের নিচে আপনার নাম ও ফেসবুক প্রোফাইলের লিঙ্ক দিতে ভুলবেন না যাতে সবাই জানতে পারে কাজটি আপনার!
+                        </li>
+                    </ul>
+
+                    <div class="note-box info">
+                        <h4><i class="fa-solid fa-circle-info"></i> সাহায্য প্রয়োজন?</h4>
+                        <p>বাম পাশের মেনু থেকে ধাপগুলো একে একে অনুসরণ করুন। এখানে খুব সহজ ভাষায় বিস্তারিত গাইডলাইন দেওয়া আছে।</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Fork & Clone -->
+            <section id="sec-fork-clone" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">ধাপ ০১</div>
+                    <h1>প্রজেক্ট ফোর্ক (Fork) ও ক্লোন (Clone) করা</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        প্রজেক্টের সোর্স কোড আপনার নিজের গিটহাব অ্যাকাউন্টে কপি করে এনে কাজ শুরু করার জন্য নিচের ধাপগুলো অনুসরণ করুন:
+                    </p>
+
+                    <div class="setup-steps">
+                        <div class="setup-step">
+                            <span class="badge-num">১</span>
+                            <div class="setup-desc">
+                                <strong>GitHub রিপোজিটরিতে যান:</strong>
+                                <p>প্রথমে ব্রাউজারে আমাদের মূল প্রোজেক্ট রিপোজিটরি লিঙ্কে প্রবেশ করুন: <a href="https://github.com/RusulAzom/ck-book" target="_blank" style="color: var(--accent-color); font-weight: 500;">github.com/RusulAzom/ck-book</a></p>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">২</span>
+                            <div class="setup-desc">
+                                <strong>প্রজেক্টটি ফোর্ক (Fork) করুন:</strong>
+                                <p>পেজের ওপরের ডান কোণায় থাকা <strong>Fork</strong> বোতামে ক্লিক করুন। এরপর <strong>Create fork</strong> এ ক্লিক করুন। এর ফলে পুরো প্রজেক্টটি আপনার গিটহাব অ্যাকাউন্টে কপি হয়ে যাবে।</p>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৩</span>
+                            <div class="setup-desc">
+                                <strong>ফোর্ক করা রিপোজিটরির URL কপি করুন:</strong>
+                                <p>ফোর্ক হওয়ার পর ব্রাউজারের অ্যাড্রেস বার থেকে আপনার রিপোজিটরির লিঙ্কটি কপি করুন (যেমন: <code>https://github.com/YOUR_USERNAME/ck-book</code>)।</p>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৪</span>
+                            <div class="setup-desc">
+                                <strong>আপনার কম্পিউটারে ক্লোন (Clone) করুন:</strong>
+                                <p>আপনার কম্পিউটারে কমান্ড প্রম্পট/টার্মিনাল অথবা VS Code-এর টার্মিনাল ওপেন করুন এবং কপি করা লিঙ্কটি দিয়ে ক্লোন করুন:</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>git clone https://github.com/YOUR_USERNAME/ck-book.git</code></pre>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">*বিঃদ্রঃ <code>YOUR_USERNAME</code> এর জায়গায় আপনার নিজস্ব গিটহাব ইউজারনেম ব্যবহার করুন।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Add Files -->
+            <section id="sec-add-files" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">ধাপ ০২</div>
+                    <h1>আপনার চিট শিটের ছবি ফোল্ডারে যুক্ত করা</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        ক্লোন করা প্রজেক্ট ফোল্ডারটি VS Code-এ ওপেন করুন এবং আপনার তৈরি করা চিট শিটের ইমেজ ফাইলটি সঠিক জায়গায় পেস্ট করুন:
+                    </p>
+
+                    <ul class="styled-list-ol">
+                        <li>
+                            আপনার চিট শিটের ইমেজ ফাইলের একটি অর্থবহ নাম দিন (যেমন: <code>html-tags-cheat-sheet.jpg</code> বা <code>css-flexbox-note.jpg</code>)।
+                        </li>
+                        <li>
+                            ছবিটি নিচের নিয়ম অনুযায়ী সঠিক ক্যাটাগরির ফোল্ডারে পেস্ট করুন:
+                            <ul>
+                                <li>HTML চিট শিট হলে: <code style="color: var(--accent-color);">imgs/cheatsheet/module 1/</code> ফোল্ডারে।</li>
+                                <li>Git & GitHub চিট শিট হলে: <code style="color: var(--accent-color);">imgs/cheatsheet/module 2/</code> ফোল্ডারে।</li>
+                                <li>CSS চিট শিট হলে: <code style="color: var(--accent-color);">imgs/cheatsheet/module 3/</code> ফোল্ডারে (ফোল্ডার না থাকলে তৈরি করে নিন)।</li>
+                                <li>JavaScript চিট শিট হলে: <code style="color: var(--accent-color);">imgs/cheatsheet/module 4/</code> ফোল্ডারে (ফোল্ডার না থাকলে তৈরি করে নিন)।</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="note-box success">
+                        <h4><i class="fa-solid fa-file-circle-check"></i> ইমেজ ফরম্যাট:</h4>
+                        <p>চেষ্টা করবেন চিট শিটের ছবিটি <code>.jpg</code> বা <code>.png</code> ফরম্যাটে যুক্ত করতে।</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Update HTML -->
+            <section id="sec-update-html" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">ধাপ ০৩</div>
+                    <h1>HTML কোড আপডেট করা</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        আপনার কার্ডটি চিট শিটের গ্যালারিতে দেখানোর জন্য আপনাকে HTML ফাইলে একটি কোড ব্লক যুক্ত করতে হবে। আমরা যেহেতু ক্লাসে HTML শিখেছি, তাই এটি খুবই সহজ হবে!
+                    </p>
+
+                    <h3>কীভাবে করবেন?</h3>
+                    <ul class="styled-list-ol">
+                        <li>
+                            VS Code-এ <code style="color: var(--accent-color);">cheatsheet.html</code> ফাইলটি ওপেন করুন।
+                        </li>
+                        <li>
+                            যে মডিউলে ছবি যোগ করেছেন, সেই মডিউলের সেকশনটি খুঁজুন (যেমন: HTML এর জন্য <code>&lt;section id="sec-html-cheatsheet"&gt;</code>)।
+                        </li>
+                        <li>
+                            সেই সেকশনের ভেতরে থাকা <code>&lt;div class="cheatsheet-gallery"&gt;</code> ট্যাগটি খুঁজুন।
+                        </li>
+                        <li>
+                            নিচের কোডটি কপি করে গ্যালারি ডিভের ভেতরে পেস্ট করে দিন:
+                        </li>
+                    </ul>
+
+                    <!-- Copyable HTML block -->
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span>HTML Template</span>
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- নতুন চিট শিট কার্ড শুরু --&gt;
+&lt;div class="gallery-card"&gt;
+    &lt;div class="gallery-image-container" onclick="openLightbox('imgs/cheatsheet/module X/your_image.jpg', 'আপনার চিট শিটের নাম')"&gt;
+        &lt;img src="imgs/cheatsheet/module X/your_image.jpg" alt="আপনার চিট শিটের নাম"&gt;
+        &lt;div class="gallery-image-overlay"&gt;
+            &lt;div class="preview-icon-wrapper"&gt;
+                &lt;i class="fa-solid fa-magnifying-glass-plus"&gt;&lt;/i&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="gallery-info"&gt;
+        &lt;h3 class="gallery-title"&gt;চিট শিটের নাম (যেমন: HTML Semantic Tags Note)&lt;/h3&gt;
+        &lt;div class="gallery-author"&gt;
+            &lt;span&gt;লেখক:&lt;/span&gt;
+            &lt;a href="আপনার_ফেসবুক_বা_প্রোফাইল_লিঙ্ক" target="_blank" class="author-link"&gt;
+                &lt;i class="fa-brands fa-facebook"&gt;&lt;/i&gt; আপনার নাম
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;a href="imgs/cheatsheet/module X/your_image.jpg" download="your_image.jpg" class="gallery-download-btn"&gt;
+            &lt;i class="fa-solid fa-download"&gt;&lt;/i&gt; ডাউনলোড করুন
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- নতুন চিট শিট কার্ড শেষ --&gt;</code></pre>
+                    </div>
+
+                    <div class="note-box warning">
+                        <h4><i class="fa-solid fa-pen-to-square"></i> কোড এডিট করার নির্দেশাবলী:</h4>
+                        <p>১. <code>module X/your_image.jpg</code> এর জায়গায় আপনার ছবির ফোল্ডার ও সঠিক ফাইলের নাম লিখুন।<br>
+                        ২. <code>আপনার চিট শিটের নাম</code> ও <code>চিট শিটের শিরোনাম</code> এ আপনার প্রজেক্টের নাম লিখুন।<br>
+                        ৩. <code>আপনার_ফেসবুক_বা_প্রোফাইল_লিঙ্ক</code> এ আপনার ফেসবুক বা যেকোনো সোশ্যাল মিডিয়া প্রোফাইলের লিঙ্ক দিন।<br>
+                        ৪. <code>আপনার নাম</code> এর জায়গায় আপনার নাম লিখে দিন।</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Push & PR -->
+            <section id="sec-push-pr" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">ধাপ ০৪</div>
+                    <h1>পরিবর্তন GitHub-এ আপলোড ও পুল রিকোয়েস্ট (PR) পাঠানো</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        কোড এডিট এবং ইমেজ অ্যাড করার পর আপনার করা কাজগুলো আমাদের মূল রিপোজিটরিতে জমা দেওয়ার নিয়ম:
+                    </p>
+
+                    <div class="setup-steps">
+                        <div class="setup-step">
+                            <span class="badge-num">১</span>
+                            <div class="setup-desc">
+                                <strong>পরিবর্তনগুলো যুক্ত (Stage) ও কমিট (Commit) করুন:</strong>
+                                <p>VS Code টার্মিনালে এই কমান্ডগুলো একে একে রান করুন:</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>git add .
+git commit -m "feat: added X cheatsheet by yourname"</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">২</span>
+                            <div class="setup-desc">
+                                <strong>কোড গিটহাবে পুশ (Push) করুন:</strong>
+                                <p>আপনার ফোর্ক করা রিমোট অ্যাকাউন্টে কোড পাঠাতে নিচের কমান্ডটি দিন:</p>
+                                <div class="code-wrapper">
+                                    <div class="code-header">
+                                        <span>Terminal</span>
+                                        <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                                    </div>
+                                    <pre><code>git push origin main</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="setup-step">
+                            <span class="badge-num">৩</span>
+                            <div class="setup-desc">
+                                <strong>পুল রিকোয়েস্ট (Pull Request) পাঠান:</strong>
+                                <p>এখন ব্রাউজারে আপনার গিটহাব অ্যাকাউন্টে ফোর্ক করা <code>ck-book</code> রিপোজিটরি পেজে যান। সেখানে একটি <strong>Compare & pull request</strong> বাটন দেখতে পাবেন, ওটাতে ক্লিক করুন। এরপর একটি সুন্দর টাইটেল দিয়ে <strong>Create pull request</strong> বোতামে ক্লিক করুন।</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note-box success">
+                        <h4><i class="fa-solid fa-circle-check"></i> অভিনন্দন!</h4>
+                        <p>আপনার পাঠানো পুল রিকোয়েস্টটি আমাদের কাছে চলে আসবে। সফল কন্ট্রিবিউশনের জন্য অগ্রিম ধন্যবাদ!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Review Schedule -->
+            <section id="sec-review-schedule" class="content-section">
+                <div class="content-card">
+                    <div class="section-badge">রিভিউ শিডিউল</div>
+                    <h1>মডারেটর রিভিউ ও ওয়েবসাইট আপডেট শিডিউল</h1>
+                    <div class="divider"></div>
+
+                    <p class="intro-text">
+                        আপনার পাঠানো কন্ট্রিবিউশনটি (Pull Request) আমাদের ওয়েবসাইট সিস্টেমে সরাসরি যুক্ত হওয়ার আগে যাচাই করা হবে।
+                    </p>
+
+                    <div class="note-box tip" style="border-left-color: var(--primary-green); background-color: rgb(16 185 129 / 0.02);">
+                        <h4><i class="fa-solid fa-clock"></i> দৈনিক আপডেট সময়:</h4>
+                        <p style="font-size: 1.15rem; color: var(--text-primary);">
+                            ওয়েবসাইট মডারেটর <strong>(Rusul Azom Sumon)</strong> প্রতিদিন <strong>রাত ১২:০০ টা (12:00 AM)</strong>-এ সমস্ত পুল রিকোয়েস্ট এবং কোড পরিবর্তনগুলো যাচাই (Review) করবেন।
+                        </p>
+                        <p style="margin-top: 10px; margin-bottom: 0;">
+                            যদি আপনার কোড এবং যুক্ত করা চিট শিটের ইমেজটি সঠিক থাকে, তবে সেটি মূল প্রজেক্টে যুক্ত (Merge) করে নেওয়া হবে এবং ওয়েবসাইটটি লাইভ আপডেট হয়ে যাবে।
+                        </p>
+                    </div>
+
+                    <h3 style="margin-top: 40px;">আমাদের লক্ষ্য:</h3>
+                    <p>
+                        এই CK Book প্রজেক্টের উদ্দেশ্য হলো আমাদের ক্লাসের বন্ধুদের শেখার পরিধি বাড়ানো। আপনার ছোট একটি অবদান আমাদের অনেক বন্ধুকে নতুন কিছু সহজে শিখতে সাহায্য করতে পারে। কোনো সাহায্য লাগলে আমাদের গ্রুপে বা মডারেটরকে সরাসরি জানাতে পারেন।
+                    </p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <p>&copy; 2026 CK Book. Made with <i class="fa-solid fa-heart" style="color: #ff4757;"></i> for learners.</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="contribute.js"></script>
+</body>
+</html>

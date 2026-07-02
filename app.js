@@ -1,5 +1,5 @@
 // ----------------------------------------------------
-// GitLearn Main JavaScript
+// CK Book Main JavaScript
 // Features: Hash Routing, LocalStorage Progress, Dark Mode, 
 // Live Sidebar Search, Code Copier, Error Accordion
 // ----------------------------------------------------
